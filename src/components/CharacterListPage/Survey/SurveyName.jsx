@@ -17,7 +17,7 @@ function SurveyName() {
   }
 
   const backToHome = () => {
-    dispatch({type: 'CLEAR_NAME_AND_CAMPAIGN'})
+    dispatch({ type: 'CLEAR_NAME_AND_CAMPAIGN' })
     history.push('/');
   }
 
@@ -32,18 +32,22 @@ function SurveyName() {
 
   return (
     <>
-      <div>
-        What is your character's name?
-        <br />
-        <input onChange={handleCharNameChange} placeholder="e.g. Leo B. Tronx" required/>
-      </div>
-      <div>
-        What campaign is this character in? (optional)
-        <br />
-        <input onChange={handlecampaignNameChange} placeholder="e.g. Icronus Campaign" />
-      </div>
-      <button onClick={backToHome} >Back to home</button>
-      <button onClick={nextPage}>Next Page</button>
+      <center>
+        <div>
+          <h2>What is your character's name?</h2>
+          <br />
+          <input onChange={handleCharNameChange} placeholder="e.g. Leo B. Tronx" required />
+        </div>
+        <div>
+          What campaign is this character in? (optional)
+          <br />
+          <input onChange={handlecampaignNameChange} placeholder="e.g. Icronus Campaign" />
+        </div>
+        <button className='btn' onClick={backToHome} >Back to home</button>
+        {'   '}
+        <button className='btn' onClick={nextPage}>Next Page</button>
+      </center>
+
     </>
   )
 }

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function SurveyReview() {
@@ -86,35 +86,35 @@ function SurveyReview() {
       }
     }
     // console.log(`modsArray: ${modsArray}` , `user.id: ${user.id}`)
-    dispatch({type: 'SET_ABILITY_MODS', payload: modsArray})
+    dispatch({ type: 'SET_ABILITY_MODS', payload: modsArray })
   } // ends calculateMods
 
   //* This will clear all reducer values and send user to the beginning of the survey.
   const restartSurvey = () => {
-    dispatch({type: 'CLEAR_FORM'})
+    dispatch({ type: 'CLEAR_FORM' })
     history.push('/survey-page-1')
   } // end restartSurvey
 
   //TODO: Write POST Request
   const submitCharacter = () => {
-    axios.post('/api/characters', 
-    {
-      abilityScores,
-      abilityMods,
-      characterName,
-      campaignName,
-      skillBonus,
-      raceId,
-      classId,
-      hitPointMax,
-      user
-    }
+    axios.post('/api/characters',
+      {
+        abilityScores,
+        abilityMods,
+        characterName,
+        campaignName,
+        skillBonus,
+        raceId,
+        classId,
+        hitPointMax,
+        user
+      }
     ).then((response) => {
       let returnId = response.data;
       console.log(`returnId`, returnId)
-      dispatch({type: 'SET_CHARACTER_ID', payload: returnId[0].id});
-      dispatch({ type: 'FETCH_CHAR_INFO', payload: returnId[0].id});
-      dispatch({type: 'CLEAR_FORM'})
+      dispatch({ type: 'SET_CHARACTER_ID', payload: returnId[0].id });
+      dispatch({ type: 'FETCH_CHAR_INFO', payload: returnId[0].id });
+      dispatch({ type: 'CLEAR_FORM' })
       history.push('/character-sheet-stats')
     }).catch((error) => {
       alert(`Error in POST: ${error}`);
@@ -124,30 +124,33 @@ function SurveyReview() {
 
   return (
     <>
-      Here's what we have for you so far:
-      <div>
-        <u>Name:</u> {characterName}, the {charRace} {charClass}
-        <br />
-        <u>Campaign Name:</u> {campaignName}
-        <br />
-        <u>Proficient Skills:</u> {skillBonus.join(', ')}
-      </div>
-      <div>
-        Strength Score: {abilityScores.str_score}
-        <br />
-        Dexterity Score: {abilityScores.dex_score}
-        <br />
-        Constitution Score: {abilityScores.con_score}
-        <br />
-        Intelligence Score: {abilityScores.int_score}
-        <br />
-        Wisdom Score: {abilityScores.wis_score}
-        <br />
-        Charisma Score: {abilityScores.cha_score}
-      </div>
-
-      <button onClick={submitCharacter} >To Charactersheet</button>
-      <button onClick={restartSurvey} >Restart Survey</button>
+      <center>
+        <h2>Here's what we have for you so far:</h2>
+        <div>
+          <u>Name:</u> {characterName}, the {charRace} {charClass}
+          <br />
+          <u>Campaign Name:</u> {campaignName}
+          <br />
+          <u>Proficient Skills:</u> {skillBonus.join(', ')}
+        </div>
+        <div>
+          Strength Score: {abilityScores.str_score}
+          <br />
+          Dexterity Score: {abilityScores.dex_score}
+          <br />
+          Constitution Score: {abilityScores.con_score}
+          <br />
+          Intelligence Score: {abilityScores.int_score}
+          <br />
+          Wisdom Score: {abilityScores.wis_score}
+          <br />
+          Charisma Score: {abilityScores.cha_score}
+        </div>
+        <br/>
+        <button className='btn' onClick={submitCharacter} >To Charactersheet</button>
+        {'   '}
+        <button className='btn' onClick={restartSurvey} >Restart Survey</button>
+      </center>
     </>
   )
 }

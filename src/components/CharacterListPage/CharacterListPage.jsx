@@ -1,8 +1,8 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector, useDispatch} from 'react-redux';
-import {useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import CharacterItem from './CharacterItem.jsx';
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ function CharacterListPage() {
 
   //* Make GET request for User's characters
   const getCharacterList = () => {
-    dispatch({type: 'FETCH_CHARACTERS'})
+    dispatch({ type: 'FETCH_CHARACTERS' })
   }
 
   const handleOnclick = () => {
@@ -33,26 +33,29 @@ function CharacterListPage() {
 
   useEffect(() => {
     getCharacterList();
-  },[])
-  
+  }, [])
+
   return (
     <div className="container">
-      {/* <h2>Welcome, {user.username}!</h2>
+      <center>
+        {/* <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p> */}
-      <h3>My Characters</h3>
-      <button onClick={handleOnclick}>New Character</button>
-      <div className="characterListDiv">
-      {
-        characterList.map(character => (
-          <CharacterItem 
-            key={character.id}
-            character={character}
-            deleteChar={deleteChar}
-          />
-        ))
-      }
-      </div>
-      <LogOutButton className="btn" />
+        <h3>My Characters</h3>
+        <button className="btn" onClick={handleOnclick}>New Character</button>
+        <div className="characterListDiv">
+          {
+            characterList.map(character => (
+              <CharacterItem
+                key={character.id}
+                character={character}
+                deleteChar={deleteChar}
+              />
+            ))
+          }
+        </div>
+        {/* <LogOutButton className="btn" /> */}
+      </center>
+
     </div>
   );
 }

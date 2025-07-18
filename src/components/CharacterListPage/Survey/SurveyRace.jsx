@@ -1,5 +1,5 @@
-import {useSelector, useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 
 function SurveyRace() {
@@ -11,7 +11,7 @@ function SurveyRace() {
 
 
   const handleRaceChange = (event) => {
-    dispatch({type: 'SET_RACE_TYPE', payload: event.target.value})
+    dispatch({ type: 'SET_RACE_TYPE', payload: event.target.value })
     // console.log(event.target.value)
   }
 
@@ -19,8 +19,8 @@ function SurveyRace() {
   const changeAbilityScores = () => {
     if (charRace === 'Human') {
       dispatch({
-        type: 'CHANGE_ABILITY_SCORES', 
-        payload:{
+        type: 'CHANGE_ABILITY_SCORES',
+        payload: {
           str_score: abilityScores.str_score + 1,
           dex_score: abilityScores.dex_score + 1,
           con_score: abilityScores.con_score + 1,
@@ -40,7 +40,7 @@ function SurveyRace() {
     } else if (charRace === 'Tiefling') {
       dispatch({
         type: 'CHANGE_ABILITY_SCORES',
-        payload:{
+        payload: {
           int_score: abilityScores.int_score + 1,
           cha_score: abilityScores.cha_score + 2
         }
@@ -48,14 +48,14 @@ function SurveyRace() {
     } else if (charRace === 'Elf') {
       dispatch({
         type: 'CHANGE_ABILITY_SCORES',
-        payload:{
+        payload: {
           dex_score: abilityScores.dex_score + 2
         }
       })
     } else if (charRace === 'Dwarf') {
       dispatch({
         type: 'CHANGE_ABILITY_SCORES',
-        payload:{
+        payload: {
           con_score: abilityScores.con_score + 2,
           wis_score: abilityScores.wis_score + 1
         }
@@ -63,7 +63,7 @@ function SurveyRace() {
     } else if (charRace === 'Half-orc') {
       dispatch({
         type: 'CHANGE_ABILITY_SCORES',
-        payload:{
+        payload: {
           str_score: abilityScores.str_score + 2,
           con_score: abilityScores.con_score + 1
         }
@@ -83,34 +83,34 @@ function SurveyRace() {
     history.push('/survey-review')
   }
 
-  return(
+  return (
     <>
-    What kind of race is your character?
-    <br />
-    <form onSubmit={nextPage} >
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Human"/> 
-      Human - Well-rounded beings from the Material Plane.
-      <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Halfling"/> 
-      Halfling - Short, swift, and naturally deft beings.
-      <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Tiefling"/> 
-      Tiefling - Often solitary and holds great arcane power.
-      <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Elf"/> 
-      Elf - Naturally gifted in magic and keen-eyed in the field.
-      <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Dwarf"/> 
-      Dwarf - Slightly shorter, but skilled with their tools, and resilient.
-      <br />
-      <input name="race-select" onClick={handleRaceChange} type="radio" value="Half-orc"/> 
-      Half-Orc - Strong beings; eager to achieve greatness through battle.
-      <br />
-      <input type="submit" value="Review Page"/>
-    </form>
-    <button onClick={backPage} >Back</button>
-
-
+      <center>
+        <h2>What kind of race is your character?</h2>
+        <br />
+        <form onSubmit={nextPage} >
+          <input name="race-select" onClick={handleRaceChange} type="radio" value="Human" />
+          Human - Well-rounded beings from the Material Plane.
+          <br />
+          <input name="race-select" onClick={handleRaceChange} type="radio" value="Halfling" />
+          Halfling - Short, swift, and naturally deft beings.
+          <br />
+          <input name="race-select" onClick={handleRaceChange} type="radio" value="Tiefling" />
+          Tiefling - Often solitary and holds great arcane power.
+          <br />
+          <input name="race-select" onClick={handleRaceChange} type="radio" value="Elf" />
+          Elf - Naturally gifted in magic and keen-eyed in the field.
+          <br />
+          <input name="race-select" onClick={handleRaceChange} type="radio" value="Dwarf" />
+          Dwarf - Slightly shorter, but skilled with their tools, and resilient.
+          <br />
+          <input name="race-select" onClick={handleRaceChange} type="radio" value="Half-orc" />
+          Half-Orc - Strong beings; eager to achieve greatness through battle.
+          <br />
+          <input className='btn' type="submit" value="Review Page"/>
+        </form>
+        <button className='btn' onClick={backPage} >Back</button>
+      </center>
     </>
   )
 }

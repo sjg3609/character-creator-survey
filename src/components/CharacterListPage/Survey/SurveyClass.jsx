@@ -6,7 +6,7 @@ function SurveyClass() {
   const history = useHistory();
   const dispatch = useDispatch();
   const charClass = useSelector(store => store.charReducers.charClass);
-  
+
   const nextPage = (event) => {
     event.preventDefault();
     if (charClass === '') {
@@ -23,7 +23,7 @@ function SurveyClass() {
 
   // handles Class value select
   const handleClassChange = (event) => {
-    dispatch({ type: 'SET_CLASS_TYPE', payload: event.target.value});
+    dispatch({ type: 'SET_CLASS_TYPE', payload: event.target.value });
     classSelect(event);
   }
 
@@ -39,7 +39,7 @@ function SurveyClass() {
         wis_score: 13,
         cha_score: 15
       }
-      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores })
 
     } else if (event.target.value === 'Barbarian') {
       console.log(`barb`)
@@ -51,7 +51,7 @@ function SurveyClass() {
         wis_score: 12,
         cha_score: 8
       }
-      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores })
 
     } else if (event.target.value === 'Paladin') {
       console.log(`paladin`)
@@ -63,7 +63,7 @@ function SurveyClass() {
         wis_score: 12,
         cha_score: 14
       }
-      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores })
 
     } else if (event.target.value === 'Ranger') {
       console.log(`ranger`)
@@ -75,7 +75,7 @@ function SurveyClass() {
         wis_score: 14,
         cha_score: 8
       }
-      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores })
 
     } else if (event.target.value === 'Cleric') {
       console.log(`cleric`)
@@ -87,7 +87,7 @@ function SurveyClass() {
         wis_score: 15,
         cha_score: 10
       }
-      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores })
 
     } else if (event.target.value === 'Rogue') {
       console.log(`rogue`)
@@ -99,7 +99,7 @@ function SurveyClass() {
         wis_score: 13,
         cha_score: 12
       }
-      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores})
+      dispatch({ type: 'SET_ABILITY_SCORES', payload: abilityScores })
 
     } else {
       alert(`No class value selected.`);
@@ -107,32 +107,34 @@ function SurveyClass() {
     }
   }
 
-  return(
+  return (
     <>
-    Which of these best describes your character?
-    <br/>
-    <form onSubmit={nextPage}>
-    <input name="class-select" onClick={handleClassChange} type="radio" value="Sorcerer"/> 
-    An offensive Spellcaster skilled with wild magic.
-    <br />
-    <input name="class-select" onClick={handleClassChange} type="radio" value="Barbarian"/> 
-    Likes to rush in, fighting toe-to-toe with a fiery Rage.
-    <br/>
-    <input name="class-select" onClick={handleClassChange} type="radio" value="Paladin"/> 
-    Skilled in defensive maneuvers with an aptitude for healing.
-    <br />
-    <input name="class-select" onClick={handleClassChange} type="radio" value="Ranger"/> 
-    Natural Survivalist skills with a keen sniper's eye.
-    <br />
-    <input name="class-select" onClick={handleClassChange} type="radio" value="Cleric"/> 
-    Skillful Healing Magic at it's most efficient.
-    <br />
-    <input name="class-select" onClick={handleClassChange} type="radio" value="Rogue"/> 
-    Swift feet, deft hands, and a sly personality.
-    <br />
-    <input type="submit" value="Next Page"/>
-    </form>
-    <button onClick={backPage} >Back</button>
+      <center>
+        <h2>Which of these best describes your character?</h2>
+        <br />
+        <form onSubmit={nextPage}>
+          <input name="class-select" onClick={handleClassChange} type="radio" value="Sorcerer" />
+          An offensive Spellcaster skilled with wild magic.
+          <br />
+          <input name="class-select" onClick={handleClassChange} type="radio" value="Barbarian" />
+          Likes to rush in, fighting toe-to-toe with a fiery Rage.
+          <br />
+          <input name="class-select" onClick={handleClassChange} type="radio" value="Paladin" />
+          Skilled in defensive maneuvers with an aptitude for healing.
+          <br />
+          <input name="class-select" onClick={handleClassChange} type="radio" value="Ranger" />
+          Natural Survivalist skills with a keen sniper's eye.
+          <br />
+          <input name="class-select" onClick={handleClassChange} type="radio" value="Cleric" />
+          Skillful Healing Magic at it's most efficient.
+          <br />
+          <input name="class-select" onClick={handleClassChange} type="radio" value="Rogue" />
+          Swift feet, deft hands, and a sly personality.
+          <br />
+          <input className='btn' type="submit" value="Next Page" />
+        </form>
+        <button className='btn' onClick={backPage} >Back</button>
+      </center>
     </>
   )
 }

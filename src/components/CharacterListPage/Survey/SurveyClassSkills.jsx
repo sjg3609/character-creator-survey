@@ -260,7 +260,7 @@ function SurveyClassSkills() {
 
   // This block of code controls the checkbox actions aon the DOM.
   const checkHandler = (event) => {
-    let {value, checked} = event.target;
+    let { value, checked } = event.target;
     if (checked) {
       if (skillCounter >= skillAmount) {
         alert(`Please choose only ${skillAmount} of skills.`);
@@ -269,16 +269,16 @@ function SurveyClassSkills() {
         event.target.checked = false;
       } else {
         setSkillCounter(prev => prev + 1);
-        dispatch({type: 'SET_SKILL_PROF', payload: value});
+        dispatch({ type: 'SET_SKILL_PROF', payload: value });
         return;
       }
     } else {
       setSkillCounter(prev => prev - 1);
-      dispatch({ type: 'REMOVE_SKILL_PROF', payload: value});
+      dispatch({ type: 'REMOVE_SKILL_PROF', payload: value });
       event.target.checked = false;
     }
   } // end checkHandler
-  
+
   const nextPage = (event) => {
     event.preventDefault();
     history.push('/survey-page-3')
@@ -286,103 +286,106 @@ function SurveyClassSkills() {
 
   const backPage = () => {
     history.push('/survey-page-2')
-    dispatch({type: 'CLEAR_SKILLS'})
+    dispatch({ type: 'CLEAR_SKILLS' })
   }
 
   return (
     <>
-      Which of these skills is your character good at?
-      {JSON.stringify(skillBonus)}
-      {
-        charClass === 'Sorcerer' ? (
-          <div>
-            <u>Please choose {skillAmount} from the following:</u>
-            <form onSubmit={nextPage} >
-              {
-                sorcererSkills.map(skill => (
-                  <div key={skill.id}>
-                    <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
-                  </div>
-                ))
-              }
-              <input type="submit" value="Next Page" />
-            </form>
-          </div>
-        ) : charClass === 'Barbarian' ? (
-          <div>
-          <u>Please choose {skillAmount} from the following:</u>
-          <form onSubmit={nextPage} >
-            {
-              barbarianSkills.map(skill => (
-                <div key={skill.id}>
-                  <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
-                </div>
-              ))
-            }
-            <input type="submit" value="Next Page" />
-          </form>
-        </div>
-        ) : charClass === 'Paladin' ? (
-          <div>
-          <u>Please choose {skillAmount} from the following:</u>
-          <form onSubmit={nextPage} >
-            {
-              paladinSkills.map(skill => (
-                <div key={skill.id}>
-                  <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
-                </div>
-              ))
-            }
-            <input type="submit" value="Next Page" />
-          </form>
-        </div>
-        ) : charClass === 'Ranger' ? (
-          <div>
-          <u>Please choose {skillAmount} from the following:</u>
-          <form onSubmit={nextPage} >
-            {
-              rangerSkills.map(skill => (
-                <div key={skill.id}>
-                  <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
-                </div>
-              ))
-            }
-            <input type="submit" value="Next Page" />
-          </form>
-        </div>
-        ) : charClass === 'Cleric' ? (
-          <div>
-          <u>Please choose {skillAmount} from the following:</u>
-          <form onSubmit={nextPage} >
-            {
-              clericSkills.map(skill => (
-                <div key={skill.id}>
-                  <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
-                </div>
-              ))
-            }
-            <input type="submit" value="Next Page" />
-          </form>
-        </div>
-        ) : charClass === 'Rogue' ? (
-          <div>
-          <u>Please choose {skillAmount} from the following:</u>
-          <form onSubmit={nextPage} >
-            {
-              rogueSkills.map(skill => (
-                <div key={skill.id}>
-                  <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
-                </div>
-              ))
-            }
-            <input type="submit" value="Next Page" />
-          </form>
-        </div>
-        ) : (
-          <h3>Please restart the survey.</h3>
-        )
-      }
-      <button onClick={backPage} >Back</button>
+      <center>
+        <h2>Which of these skills is your character good at?</h2>
+        {JSON.stringify(skillBonus)}
+        {
+          charClass === 'Sorcerer' ? (
+            <div>
+              <u>Please choose {skillAmount} from the following:</u>
+              <form onSubmit={nextPage} >
+                {
+                  sorcererSkills.map(skill => (
+                    <div key={skill.id}>
+                      <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
+                    </div>
+                  ))
+                }
+                <input className='btn' type="submit" value="Next Page" />
+              </form>
+            </div>
+          ) : charClass === 'Barbarian' ? (
+            <div>
+              <u>Please choose {skillAmount} from the following:</u>
+              <form onSubmit={nextPage} >
+                {
+                  barbarianSkills.map(skill => (
+                    <div key={skill.id}>
+                      <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
+                    </div>
+                  ))
+                }
+                <input className='btn' type="submit" value="Next Page" />
+              </form>
+            </div>
+          ) : charClass === 'Paladin' ? (
+            <div>
+              <u>Please choose {skillAmount} from the following:</u>
+              <form onSubmit={nextPage} >
+                {
+                  paladinSkills.map(skill => (
+                    <div key={skill.id}>
+                      <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
+                    </div>
+                  ))
+                }
+                <input className='btn' type="submit" value="Next Page" />
+              </form>
+            </div>
+          ) : charClass === 'Ranger' ? (
+            <div>
+              <u>Please choose {skillAmount} from the following:</u>
+              <form onSubmit={nextPage} >
+                {
+                  rangerSkills.map(skill => (
+                    <div key={skill.id}>
+                      <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
+                    </div>
+                  ))
+                }
+                <input className='btn' type="submit" value="Next Page" />
+              </form>
+            </div>
+          ) : charClass === 'Cleric' ? (
+            <div>
+              <u>Please choose {skillAmount} from the following:</u>
+              <form onSubmit={nextPage} >
+                {
+                  clericSkills.map(skill => (
+                    <div key={skill.id}>
+                      <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
+                    </div>
+                  ))
+                }
+                <input className='btn' type="submit" value="Next Page" />
+              </form>
+            </div>
+          ) : charClass === 'Rogue' ? (
+            <div>
+              <u>Please choose {skillAmount} from the following:</u>
+              <form onSubmit={nextPage} >
+                {
+                  rogueSkills.map(skill => (
+                    <div key={skill.id}>
+                      <input id={skill.id} name="skill-prof-class" type="checkbox" onChange={checkHandler} value={skill.name} /> <b>{skill.name}</b> - {skill.description}
+                    </div>
+                  ))
+                }
+                <input className='btn' type="submit" value="Next Page" />
+              </form>
+            </div>
+          ) : (
+            <h3>Please restart the survey.</h3>
+          )
+        }
+        <button className='btn' onClick={backPage} >Back</button>
+      </center>
+
     </>
   )
 }
